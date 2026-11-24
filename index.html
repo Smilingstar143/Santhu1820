@@ -4,26 +4,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CG PART-A PROGRAMS</title>
+<title>CG PART-A PROGRAMS | Smiling Star</title>
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #100c20, #21143d, #130e27);
+    background: linear-gradient(-45deg, #160d30, #29134a, #1b1040, #35145e);
+    background-size: 400% 400%;
+    animation: backgroundMove 15s ease infinite;
     color: #f5edff;
     min-height: 100vh;
     padding: 25px 15px;
+    overflow-x: hidden;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 header {
     text-align: center;
     padding: 25px 10px 35px;
+    animation: headerEnter 1s ease both;
+}
+
+@keyframes headerEnter {
+    from { opacity: 0; transform: translateY(-25px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .logo {
@@ -44,11 +60,16 @@ header {
 h1 {
     font-size: clamp(24px, 5vw, 36px);
     letter-spacing: 2px;
-    color: #ffffff;
     background: linear-gradient(90deg, #d9baff, #a875f5, #efdfff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { filter: drop-shadow(0 0 2px #a875f5); }
+    to { filter: drop-shadow(0 0 12px #c69bff); }
 }
 
 .subtitle {
@@ -63,12 +84,34 @@ h1 {
 }
 
 .program-card {
-    background: linear-gradient(145deg, #261b40, #1b1530);
-    border: 1px solid #62458d;
-    border-radius: 16px;
+    position: relative;
+    background: linear-gradient(145deg, rgba(55,34,86,.94), rgba(30,20,54,.96));
+    border: 1px solid #7955a8;
+    border-radius: 20px;
     padding: 20px;
-    margin: 22px 0;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    margin: 24px 0;
+    box-shadow: 0 10px 28px rgba(12,5,30,.28);
+    transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+    animation: cardEnter .8s ease both;
+}
+
+.program-card:nth-child(2) { animation-delay: .08s; }
+.program-card:nth-child(3) { animation-delay: .16s; }
+.program-card:nth-child(4) { animation-delay: .24s; }
+.program-card:nth-child(5) { animation-delay: .32s; }
+.program-card:nth-child(6) { animation-delay: .40s; }
+.program-card:nth-child(7) { animation-delay: .48s; }
+.program-card:nth-child(8) { animation-delay: .56s; }
+
+@keyframes cardEnter {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.program-card:hover {
+    transform: translateY(-7px);
+    border-color: #d1aaff;
+    box-shadow: 0 16px 35px rgba(168,85,247,.25);
 }
 
 .program-title {
@@ -87,7 +130,7 @@ h1 {
 }
 
 .code-label {
-    color: #bba5da;
+    color: #c9b3e8;
     font-size: 12px;
     letter-spacing: 1px;
 }
@@ -95,25 +138,31 @@ h1 {
 .copy-btn {
     background: linear-gradient(135deg, #a875f5, #7544c6);
     color: white;
-    border: none;
-    padding: 9px 16px;
-    border-radius: 8px;
+    border: 1px solid #cdaaff;
+    padding: 10px 17px;
+    border-radius: 25px;
     font-weight: 600;
     cursor: pointer;
     font-size: 12px;
+    transition: .3s ease;
+}
+
+.copy-btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 6px 18px rgba(192,132,252,.4);
 }
 
 .copy-btn:active {
-    transform: scale(0.96);
+    transform: scale(.96);
 }
 
 .code-box {
     width: 100%;
     min-height: 220px;
-    background: #120e20;
-    color: #e8d8ff;
-    border: 1px solid #493466;
-    border-radius: 10px;
+    background: #211536;
+    color: #eadcff;
+    border: 1px solid #62458d;
+    border-radius: 12px;
     padding: 16px;
     font-family: Consolas, monospace;
     font-size: 13px;
@@ -126,9 +175,11 @@ h1 {
 
 footer {
     text-align: center;
-    padding: 40px 10px 20px;
-    margin-top: 25px;
-    border-top: 1px solid #493466;
+    padding: 35px 10px 25px;
+    margin-top: 35px;
+    border-top: 1px solid #7955a8;
+    position: relative;
+    overflow: hidden;
 }
 
 .thanks {
@@ -138,7 +189,7 @@ footer {
 }
 
 .created {
-    color: #bba5da;
+    color: #cbb5e8;
     font-size: 13px;
     letter-spacing: 2px;
 }
@@ -151,11 +202,169 @@ footer {
     margin-top: 8px;
 }
 
+.finish-btn {
+    margin-top: 25px;
+    padding: 14px 25px;
+    border: 1px solid #e1c5ff;
+    border-radius: 35px;
+    background: linear-gradient(100deg, #7544c6, #b17af4, #7544c6);
+    background-size: 200% auto;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 5px 22px rgba(168,85,247,.3);
+    transition: .35s ease;
+}
+
+.finish-btn:hover {
+    background-position: right center;
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 8px 28px rgba(192,132,252,.5);
+}
+
+/* MAGICAL ENDING SCREEN */
+
+.magic-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+    overflow: hidden;
+    background: radial-gradient(circle at center, #48216f, #21103e 55%, #10091f);
+}
+
+.magic-screen.active {
+    display: flex;
+    animation: screenReveal 1s ease both;
+}
+
+@keyframes screenReveal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.magic-stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.magic-star {
+    position: absolute;
+    color: #e8cfff;
+    font-size: 17px;
+    animation: starFloat 5s ease-in-out infinite;
+    text-shadow: 0 0 12px #d9baff;
+}
+
+@keyframes starFloat {
+    0% { transform: translateY(30px) rotate(0deg); opacity: 0; }
+    25% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(180deg); opacity: 0; }
+}
+
+.magic-content {
+    position: relative;
+    z-index: 2;
+    animation: magicContent 1.4s ease both;
+}
+
+@keyframes magicContent {
+    from { opacity: 0; transform: scale(.65) translateY(25px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.magic-heading {
+    color: #f4e7ff;
+    font-size: clamp(30px, 8vw, 55px);
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px #bd8cff, 0 0 35px #8b5cf6;
+    animation: headingPulse 2.5s infinite alternate;
+}
+
+@keyframes headingPulse {
+    from { text-shadow: 0 0 8px #bd8cff; }
+    to { text-shadow: 0 0 25px #e4caff, 0 0 50px #9b5de5; }
+}
+
+.magic-subtitle {
+    color: #e3caff;
+    margin-top: 18px;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+.magic-big-star {
+    font-size: 75px;
+    color: #e7ceff;
+    margin: 25px 0;
+    text-shadow: 0 0 20px #d4aaff;
+    animation: magicStarSpin 8s linear infinite;
+}
+
+@keyframes magicStarSpin {
+    to { transform: rotate(360deg); }
+}
+
+.magic-logo {
+    font-size: clamp(25px, 6vw, 38px);
+    color: #C69BFF;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-top: 15px;
+}
+
+.magic-tagline {
+    color: #e4d2ff;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+.magic-controls {
+    position: relative;
+    z-index: 3;
+    margin-top: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.magic-controls button {
+    border: 1px solid #d9baff;
+    border-radius: 30px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #8b5cf6, #b17af4);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.magic-controls button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #a875f5;
+}
+
+.close-magic {
+    background: transparent !important;
+}
+
 @media(max-width:600px) {
     body { padding: 12px 10px; }
-    .program-card { padding: 14px; }
+    .program-card { padding: 14px; border-radius: 16px; }
     .program-title { font-size: 15px; }
     .code-box { font-size: 12px; }
+    .magic-heading { letter-spacing: 2px; }
 }
 </style>
 </head>
@@ -775,80 +984,4 @@ switch(choice)
         for(int i = 0; i < 8; i++)
         {
             int xt = x[i];
-            int yt = y[i];
-
-            x[i] = xt * cos(rad) - yt * sin(rad);
-            y[i] = xt * sin(rad) + yt * cos(rad);
-        }
-
-        break;
-    }
-
-    default:
-        cout << "Invalid Choice!";
-        getch();
-        closegraph();
-        return 0;
-}
-
-setcolor(RED);
-
-// Front face
-line(x[0], y[0], x[1], y[1]);
-line(x[1], y[1], x[2], y[2]);
-line(x[2], y[2], x[3], y[3]);
-line(x[3], y[3], x[0], y[0]);
-
-// Back face
-line(x[4], y[4], x[5], y[5]);
-line(x[5], y[5], x[6], y[6]);
-line(x[6], y[6], x[7], y[7]);
-line(x[7], y[7], x[4], y[4]);
-
-// Connecting edges
-line(x[0], y[0], x[4], y[4]);
-line(x[1], y[1], x[5], y[5]);
-line(x[2], y[2], x[6], y[6]);
-line(x[3], y[3], x[7], y[7]);
-
-outtextxy(10, 10, "3D Transformation");
-
-getch();
-closegraph();
-
-return 0;
-}</textarea>
-</div>
-
-</main>
-
-<footer>
-    <p class="thanks">Thanks For Visiting My Website</p>
-    <p class="created">Created By</p>
-    <div class="footer-logo">𝑺𝒎𝒊𝒍𝒊𝒏𝒈 𝑺𝒕𝒂𝒓</div>
-</footer>
-
-<script>
-function copyProgram(button) {
-    const code = button.parentElement.nextElementSibling;
-
-    navigator.clipboard.writeText(code.value).then(function() {
-        const oldText = button.innerText;
-        button.innerText = "Copied!";
-        setTimeout(function() {
-            button.innerText = oldText;
-        }, 1500);
-    }).catch(function() {
-        code.select();
-        document.execCommand("copy");
-        button.innerText = "Copied!";
-        setTimeout(function() {
-            button.innerText = "Copy Program";
-        }, 1500);
-    });
-}
-</script>
-
-</body>
-  </html>
-  
+            in
