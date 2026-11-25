@@ -838,62 +838,8 @@ return 0;
 <span class="code-label">C++ PROGRAM</span>
 <button class="copy-btn" onclick="copyProgram(this)">Copy Program</button>
 </div>
-<textarea class="code-box" readonly spellcheck="false">#include <graphics.h>
-#include <iostream.h>
-#include <conio.h>
-
-int main()
-{
-int gd = DETECT, gm;
-initgraph(&gd, &gm, "C:\TURBOC3\BGI");
-
-int xmin = 150, ymin = 150;
-int xmax = 350, ymax = 300;
-
-rectangle(xmin, ymin, xmax, ymax);
-
-int poly[] = {
-    100,100,
-    250,100,
-    400,200,
-    300,350,
-    150,300,
-    100,100
-};
-
-setcolor(WHITE);
-drawpoly(6, poly);
-
-outtextxy(50, 50, "Original Polygon");
-
-int clipped[] = {
-    150,150,
-    250,150,
-    350,200,
-    300,300,
-    150,300,
-    150,150
-};
-
-setcolor(RED);
-drawpoly(6, clipped);
-
-outtextxy(60, 60, "Clipped Polygon");
-
-getch();
-closegraph();
-
-return 0;
-}</textarea>
-</div>
-
-<div class="program-card">
-<h2 class="program-title">8. Program to Perform 3D Transformations</h2>
-<div class="code-header">
-<span class="code-label">C++ PROGRAM</span>
-<button class="copy-btn" onclick="copyProgram(this)">Copy Program</button>
-</div>
-<textarea class="code-box" readonly spellcheck="false">#include <graphics.h>
+<textarea class="code-box" readonly spellcheck="false">
+#include <graphics.h>
 #include <iostream.h>
 #include <math.h>
 #include <conio.h>
@@ -903,85 +849,128 @@ int main()
 int gd = DETECT, gm;
 initgraph(&gd, &gm, "C:\TURBOC3\BGI");
 
-int x[8] = {100, 200, 200, 100, 150, 250, 250, 150};
-int y[8] = {100, 100, 200, 200, 50, 50, 150, 150};
-int z[8] = {0, 0, 0, 0, 100, 100, 100, 100};
+int x[8] = {100, 200, 200, 100, 150, 250, 250, 150};  
+int y[8] = {100, 100, 200, 200, 50, 50, 150, 150};  
+int z[8] = {0, 0, 0, 0, 100, 100, 100, 100};  
 
-setcolor(WHITE);
+setcolor(WHITE);  
 
-// Front face
-line(x[0], y[0], x[1], y[1]);
-line(x[1], y[1], x[2], y[2]);
-line(x[2], y[2], x[3], y[3]);
-line(x[3], y[3], x[0], y[0]);
+// Front face  
+line(x[0], y[0], x[1], y[1]);  
+line(x[1], y[1], x[2], y[2]);  
+line(x[2], y[2], x[3], y[3]);  
+line(x[3], y[3], x[0], y[0]);  
 
-// Back face
-line(x[4], y[4], x[5], y[5]);
-line(x[5], y[5], x[6], y[6]);
-line(x[6], y[6], x[7], y[7]);
-line(x[7], y[7], x[4], y[4]);
+// Back face  
+line(x[4], y[4], x[5], y[5]);  
+line(x[5], y[5], x[6], y[6]);  
+line(x[6], y[6], x[7], y[7]);  
+line(x[7], y[7], x[4], y[4]);  
 
-// Connecting edges
-line(x[0], y[0], x[4], y[4]);
-line(x[1], y[1], x[5], y[5]);
-line(x[2], y[2], x[6], y[6]);
-line(x[3], y[3], x[7], y[7]);
+// Connecting edges  
+line(x[0], y[0], x[4], y[4]);  
+line(x[1], y[1], x[5], y[5]);  
+line(x[2], y[2], x[6], y[6]);  
+line(x[3], y[3], x[7], y[7]);  
 
-int choice;
+int choice;  
 
-cout << "\n3D Transformations";
-cout << "\n1. Translation";
-cout << "\n2. Scaling";
-cout << "\n3. Rotation (Z-axis)";
-cout << "\nEnter your choice: ";
-cin >> choice;
+cout << "\n3D Transformations";  
+cout << "\n1. Translation";  
+cout << "\n2. Scaling";  
+cout << "\n3. Rotation (Z-axis)";  
+cout << "\nEnter your choice: ";  
+cin >> choice;  
 
-switch(choice)
-{
-    case 1:
-    {
-        int tx, ty, tz;
+switch(choice)  
+{  
+    case 1:  
+    {  
+        int tx, ty, tz;  
 
-        cout << "Enter Translation Factors (tx ty tz): ";
-        cin >> tx >> ty >> tz;
+        cout << "Enter Translation Factors (tx ty tz): ";  
+        cin >> tx >> ty >> tz;  
 
-        for(int i = 0; i < 8; i++)
-        {
-            x[i] += tx;
-            y[i] += ty;
-            z[i] += tz;
-        }
+        for(int i = 0; i < 8; i++)  
+        {  
+            x[i] += tx;  
+            y[i] += ty;  
+            z[i] += tz;  
+        }  
 
-        break;
-    }
+        break;  
+    }  
 
-    case 2:
-    {
-        float sx, sy, sz;
+    case 2:  
+    {  
+        float sx, sy, sz;  
 
-        cout << "Enter Scaling Factors (sx sy sz): ";
-        cin >> sx >> sy >> sz;
+        cout << "Enter Scaling Factors (sx sy sz): ";  
+        cin >> sx >> sy >> sz;  
 
-        for(int i = 0; i < 8; i++)
-        {
-            x[i] *= sx;
-            y[i] *= sy;
-            z[i] *= sz;
-        }
+        for(int i = 0; i < 8; i++)  
+        {  
+            x[i] *= sx;  
+            y[i] *= sy;  
+            z[i] *= sz;  
+        }  
 
-        break;
-    }
+        break;  
+    }  
 
-    case 3:
-    {
-        float angle;
+    case 3:  
+    {  
+        float angle;  
 
-        cout << "Enter Rotation Angle: ";
-        cin >> angle;
+        cout << "Enter Rotation Angle: ";  
+        cin >> angle;  
 
-        float rad = angle * 3.14159 / 180;
+        float rad = angle * 3.14159 / 180;  
 
-        for(int i = 0; i < 8; i++)
-        {
-            int xt = x[i];
-            in
+        for(int i = 0; i < 8; i++)  
+        {  
+            int xt = x[i];  
+            int yt = y[i];  
+
+            x[i] = xt * cos(rad) - yt * sin(rad);  
+            y[i] = xt * sin(rad) + yt * cos(rad);  
+        }  
+
+        break;  
+    }  
+
+    default:  
+        cout << "Invalid Choice!";  
+        getch();  
+        closegraph();  
+        return 0;  
+}  
+
+setcolor(RED);  
+
+// Front face  
+line(x[0], y[0], x[1], y[1]);  
+line(x[1], y[1], x[2], y[2]);  
+line(x[2], y[2], x[3], y[3]);  
+line(x[3], y[3], x[0], y[0]);  
+
+// Back face  
+line(x[4], y[4], x[5], y[5]);  
+line(x[5], y[5], x[6], y[6]);  
+line(x[6], y[6], x[7], y[7]);  
+line(x[7], y[7], x[4], y[4]);  
+
+// Connecting edges  
+line(x[0], y[0], x[4], y[4]);  
+line(x[1], y[1], x[5], y[5]);  
+line(x[2], y[2], x[6], y[6]);  
+line(x[3], y[3], x[7], y[7]);  
+
+outtextxy(10, 10, "3D Transformation");  
+
+getch();  
+closegraph();  
+
+return 0;
+
+}
